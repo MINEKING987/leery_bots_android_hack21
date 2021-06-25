@@ -1,4 +1,4 @@
-package com.me.Book_O_Matic
+package com.me.book_o_matic
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

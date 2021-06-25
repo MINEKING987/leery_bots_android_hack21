@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "518953422998",
+    "project_id": "book-o-matic-7ba90",
+    "storage_bucket": "book-o-matic-7ba90.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:518953422998:android:2f24f9ff85bf46478b32b7",
+        "android_client_info": {
+          "package_name": "com.me.book_o_matic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "518953422998-47pit0nenm8srkk7luaji66julmkk2ke.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.me.book_o_matic",
+            "certificate_hash": "a3406ba1e819c75a9ca07ad064783554bb5e69f9"
+          }
+        },
+        {
+          "client_id": "518953422998-lagh6ekbaa0mps9hv5g0rr13n1d4jv6e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcrAqHXgCrcgcTNN8OwMIeshw7kX1TlrY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "518953422998-lagh6ekbaa0mps9hv5g0rr13n1d4jv6e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
