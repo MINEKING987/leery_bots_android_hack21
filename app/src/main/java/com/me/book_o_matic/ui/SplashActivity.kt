@@ -31,14 +31,17 @@ class SplashActivity : AppCompatActivity() {
     private fun run(){
         val repository = Repository(this)
         if (auth.currentUser != null) {
-            if(repository.getonBoarding()){TODO("GO TO Main ACTIVITY")}
+            if(repository.getonBoarding()){
+                val intent = Intent(this,MainActivity::class.java)
+                startActivity(intent)
+            }
             else{
-                intent = Intent(this,LoginActivity::class.java)
+                val intent = Intent(this,LoginActivity::class.java)
                 intent.putExtra("goto",1)
                 startActivity(intent)
             }
         } else {
-            intent = Intent(this,LoginActivity::class.java)
+            val intent = Intent(this,LoginActivity::class.java)
             intent.putExtra("goto",0)
             startActivity(intent)
         }

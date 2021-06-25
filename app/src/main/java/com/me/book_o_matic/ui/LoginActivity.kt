@@ -1,5 +1,6 @@
 package com.me.book_o_matic.ui
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,7 +12,6 @@ import com.me.book_o_matic.adapters.GateTransformation
 import com.me.book_o_matic.ui.loginfragments.LoginFragment
 import com.me.book_o_matic.ui.loginfragments.OnBoardingFragment1
 import com.me.book_o_matic.ui.loginfragments.OnBoardingFragment2
-import kotlin.properties.Delegates
 
 class LoginActivity : AppCompatActivity() {
     lateinit var viewPager: ViewPager2
@@ -51,6 +51,7 @@ class LoginActivity : AppCompatActivity() {
 
     private class ViewPagerFragmentAdapter(fragmentActivity: FragmentActivity) :
         FragmentStateAdapter(fragmentActivity) {
+        val context:Context = fragmentActivity
         //creating fragments to show when selected or slid to
         override fun createFragment(position: Int): Fragment {
             when (position) {
