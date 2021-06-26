@@ -4,8 +4,6 @@ import android.content.Context
 
 class Repository(context: Context) : SharedPreferencesUtilities(context, SHARED_PREF_NAME){
 
-    val userid:String = ""
-
     fun setisloggedin(bool:Boolean){
         putBoolean(USER_ONBOARDING_DONE,bool)
     }
@@ -17,6 +15,9 @@ class Repository(context: Context) : SharedPreferencesUtilities(context, SHARED_
     }
     fun setuserIntrests(string: String){
         putString(USER_INTERESTS,string)
+    }
+    fun setuserSubs(string: String){
+        putString(USER_SUBSCRIPTIONS,string)
     }
 
     fun getpenName():String{
@@ -30,5 +31,8 @@ class Repository(context: Context) : SharedPreferencesUtilities(context, SHARED_
     }
     fun getuserInterests():String{
         return getString(USER_INTERESTS,"")!!
+    }
+    fun getuserSubs():String{
+        return getString(USER_SUBSCRIPTIONS,"")!!
     }
 }

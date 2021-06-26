@@ -33,15 +33,18 @@ class SplashActivity : AppCompatActivity() {
         if (auth.currentUser != null) {
             if(repository.getonBoarding()){
                 val intent = Intent(this,MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
             }
             else{
                 val intent = Intent(this,LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 intent.putExtra("goto",1)
                 startActivity(intent)
             }
         } else {
             val intent = Intent(this,LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             intent.putExtra("goto",0)
             startActivity(intent)
         }

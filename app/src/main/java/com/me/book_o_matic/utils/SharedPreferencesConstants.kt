@@ -4,6 +4,8 @@ const val USER_ONBOARDING_DONE = "onBoardingDone"
 const val USER_PENNAME = "penName"
 const val USER_UID = "userid"
 const val USER_INTERESTS = "userInterests"
+const val USER_SUBSCRIPTIONS = "userSubscription"
+
 
 
 const val SHARED_PREF_NAME = "Bookomatic"

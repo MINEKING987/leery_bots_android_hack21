@@ -42,8 +42,8 @@ class LoginFragment() : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        repo = Repository(requireActivity().applicationContext)
         val view = inflater.inflate(R.layout.fragment_login,container,false)
+        repo = Repository(view.context)
         loginbutton=view.findViewById(R.id.button_login)
         loginbutton.setOnClickListener(View.OnClickListener {
             signInLauncher.launch(signInIntent)
@@ -69,6 +69,7 @@ class LoginFragment() : Fragment(){
                     repo.setisloggedin(true)
                     repo.setuserID(auth.currentUser.uid)
                     repo.setuserIntrests(doc!!.interests)
+                    repo.setuserSubs(doc!!.subs)
                     val intent = Intent(this.activity,MainActivity::class.java)
                     startActivity(intent)
                 }

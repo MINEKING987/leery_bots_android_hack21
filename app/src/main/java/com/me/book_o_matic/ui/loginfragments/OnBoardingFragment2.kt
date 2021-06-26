@@ -36,8 +36,8 @@ class OnBoardingFragment2() : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        repo = Repository(requireActivity().applicationContext)
         val view = inflater.inflate(R.layout.fragment_on_boarding2,container,false)
+        repo = Repository(view.context)
         mFlowLayout = view.findViewById(R.id.flowLayout)
         mInflater= LayoutInflater.from(this.activity)
         val strs = INTERESTS.split(",")
