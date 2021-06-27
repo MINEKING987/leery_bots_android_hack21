@@ -22,9 +22,6 @@ class Repository(context: Context) : SharedPreferencesUtilities(context, SHARED_
     fun setuserSubs(string: String){
         putString(USER_SUBSCRIPTIONS,string)
     }
-    fun setuserBio(string: String){
-        putString(USER_BIO,string)
-    }
 
     fun getpenName():String{
        return getString(USER_PENNAME,"")!!
@@ -43,9 +40,6 @@ class Repository(context: Context) : SharedPreferencesUtilities(context, SHARED_
     }
     fun getuserSubs():String{
         return getString(USER_SUBSCRIPTIONS,"")!!
-    }
-    fun getuserBio():String{
-        return getString(USER_BIO,"")!!
     }
     fun signout(){
         clearAll()

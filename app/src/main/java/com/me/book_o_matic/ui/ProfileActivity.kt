@@ -52,7 +52,7 @@ class ProfileActivity : AppCompatActivity() {
                     if (subs.contains("$uid")) {
                         subs.removeAll { it == "$uid" }
                         val outstr = if(subs.isEmpty()){""}else{subs.joinToString(separator = ",")}
-                        Log.i("profileActivityrem",outstr)
+                        Log.i("profileActivityrem", "$subs $uid $outstr")
                         repo.setuserSubs(outstr)
                         db.collection("User").document(repo.getuserID())
                             .update("subs", outstr)

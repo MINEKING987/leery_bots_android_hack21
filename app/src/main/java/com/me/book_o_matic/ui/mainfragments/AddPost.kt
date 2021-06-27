@@ -73,8 +73,8 @@ class AddPost:Fragment() {
             Toast.makeText(this.activity,"The world will Know....", Toast.LENGTH_SHORT).show()
             sendcloudnotif(view)
             imgview.setImageResource(0)
-            tags.text="" as Editable
-            content.text="" as Editable
+            tags.setText("")
+            content.setText("")
             (activity as MainActivity).movetofragment(1)
         }
 

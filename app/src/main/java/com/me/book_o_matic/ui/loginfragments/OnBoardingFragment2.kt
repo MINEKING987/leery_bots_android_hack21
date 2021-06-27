@@ -88,6 +88,7 @@ class OnBoardingFragment2() : Fragment() {
                         startActivity(intent)
                     }
                     val i = Intent(this.activity,MainActivity::class.java)
+                    i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(i)
                 }
             }
