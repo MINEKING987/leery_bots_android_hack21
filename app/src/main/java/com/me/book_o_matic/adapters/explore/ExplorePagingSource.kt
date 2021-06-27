@@ -30,7 +30,7 @@ class ExplorePagingSource(private val db: FirebaseFirestore, repository: Reposit
                 nextKey = nextPage
             )
         } catch (e: Exception) {
-            Log.e("PAGINGSource:",e.message.toString())
+            Log.e("explorepagingSource:",e.message.toString())
             LoadResult.Error(e)
 
         }

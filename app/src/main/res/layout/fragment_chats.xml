@@ -5,17 +5,98 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="302dp"
-        android:layout_marginEnd="193dp"
-        android:layout_marginBottom="410dp"
-        android:text="TextView"
+    <Button
+        android:id="@+id/general"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="3dp"
+        android:background="#8030987B"
+        android:fontFamily="@font/rokkitt_bold"
+        android:text="General \nChat"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toStartOf="@+id/guideline7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <Button
+        android:id="@+id/hiddenjewls"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="3dp"
+        android:background="#8032B555"
+        android:fontFamily="@font/rokkitt_bold"
+        android:text="Hidden Jewels"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/webtoon"
+        app:layout_constraintTop_toBottomOf="@+id/bookrec" />
+
+    <Button
+        android:id="@+id/webtoon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="3dp"
+        android:background="#806F2FCC"
+        android:fontFamily="@font/rokkitt_bold"
+        android:text="Webtoon"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/general" />
+
+
+    <Button
+        android:id="@+id/bookrec"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="3dp"
+        android:background="#80B5620E"
+        android:fontFamily="@font/rokkitt_bold"
+        android:text="Book Recommondations"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline7"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#802A3B55"
+        android:text="Chats"
+        android:fontFamily="@font/rokkitt_bold"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:layout_margin="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

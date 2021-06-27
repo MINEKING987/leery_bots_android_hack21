@@ -16,6 +16,7 @@ import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.messaging.FirebaseMessaging
 import com.me.book_o_matic.R
 import com.me.book_o_matic.firebasemodels.User
 import com.me.book_o_matic.ui.LoginActivity
@@ -26,6 +27,7 @@ import com.me.book_o_matic.utils.Repository
 class LoginFragment() : Fragment(){
     val db:FirebaseFirestore = FirebaseFirestore.getInstance()
     val auth:FirebaseAuth = FirebaseAuth.getInstance()
+    val cloudMessage = FirebaseMessaging.getInstance()
     lateinit var repo:Repository
     private lateinit var loginbutton:Button
     private val signInLauncher = registerForActivityResult(FirebaseAuthUIActivityResultContract()) { res ->
@@ -70,6 +72,11 @@ class LoginFragment() : Fragment(){
                     repo.setuserID(auth.currentUser.uid)
                     repo.setuserIntrests(doc!!.interests)
                     repo.setuserSubs(doc!!.subs)
+                    val subarr = doc!!.subs.split(",")
+                    if(subarr.isNotEmpty()){
+
+                    }
+
                     val intent = Intent(this.activity,MainActivity::class.java)
                     startActivity(intent)
                 }

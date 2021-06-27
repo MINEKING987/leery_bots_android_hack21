@@ -83,6 +83,7 @@ class OnBoardingFragment2() : Fragment() {
                         repo.setisloggedin(true)
                         repo.setuserID(auth.currentUser.uid)
                         repo.setuserIntrests(doc!!.interests)
+                        repo.setName(doc!!.name)
                         val intent = Intent(this.activity,MainActivity::class.java)
                         startActivity(intent)
                     }

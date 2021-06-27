@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.me.book_o_matic.ui.SplashActivity"
-    android:background="#222831">
+    android:background="@color/darkblue">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/appCompatImageView"

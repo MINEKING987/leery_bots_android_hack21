@@ -13,10 +13,11 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.firebase.firestore.FirebaseFirestore
 import com.me.book_o_matic.R
 import com.me.book_o_matic.adapters.PostsAdapter
 import com.me.book_o_matic.adapters.explore.ExploreViewModel
-import com.me.book_o_matic.adapters.subscriptions.SubscriptionsViewModel
+import com.me.book_o_matic.firebasemodels.Post
 import com.me.book_o_matic.utils.Repository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
@@ -26,6 +27,7 @@ import kotlinx.coroutines.launch
 class Explore:Fragment() {
     private val PostViewModel by viewModels<ExploreViewModel>()
     private val postsAdapter = PostsAdapter()
+
     lateinit var repo: Repository
     lateinit var recyclerView: RecyclerView
     lateinit var progressBar: ProgressBar

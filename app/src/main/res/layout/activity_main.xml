@@ -5,14 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity"
-    android:background="#222831">
+    >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/gradient_6"
+        android:scaleType="fitXY"/>
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
         app:layout_constraintBottom_toTopOf="@+id/tabLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +40,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:tabIconTint="#964B00"
-        app:tabSelectedTextColor="#432200"
-        app:tabTextColor="#964B00"/>
+        app:tabIconTint="@color/darkblue"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

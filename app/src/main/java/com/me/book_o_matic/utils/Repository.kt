@@ -10,6 +10,9 @@ class Repository(context: Context) : SharedPreferencesUtilities(context, SHARED_
     fun setpenName(string: String){
         putString(USER_PENNAME,string)
     }
+    fun setName(string: String){
+        putString(USER_NAME,string)
+    }
     fun setuserID(string: String){
         putString(USER_UID,string)
     }
@@ -19,9 +22,15 @@ class Repository(context: Context) : SharedPreferencesUtilities(context, SHARED_
     fun setuserSubs(string: String){
         putString(USER_SUBSCRIPTIONS,string)
     }
+    fun setuserBio(string: String){
+        putString(USER_BIO,string)
+    }
 
     fun getpenName():String{
        return getString(USER_PENNAME,"")!!
+    }
+    fun getName():String{
+       return getString(USER_NAME,"")!!
     }
     fun getonBoarding(): Boolean {
         return getBoolean(USER_ONBOARDING_DONE,false)
@@ -34,5 +43,11 @@ class Repository(context: Context) : SharedPreferencesUtilities(context, SHARED_
     }
     fun getuserSubs():String{
         return getString(USER_SUBSCRIPTIONS,"")!!
+    }
+    fun getuserBio():String{
+        return getString(USER_BIO,"")!!
+    }
+    fun signout(){
+        clearAll()
     }
 }

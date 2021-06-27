@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/style_button_roundedcorners">
+    >
 
     <TextView
         android:id="@+id/textView5"
@@ -12,8 +17,10 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/rokkitt"
         android:text="Whats New!"
+        android:textColor="@color/white"
         android:textSize="30sp"
-        android:layout_margin="5dp"
+        android:layout_margin="30dp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,54 +28,62 @@
 
     <EditText
         android:id="@+id/tags"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="49dp"
+        android:textAlignment="center"
         android:background="@drawable/style_button_roundedcorners"
         android:fontFamily="@font/rokkitt"
         android:hint="Add Tags"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2" />
 
     <EditText
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="4dp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:background="@drawable/style_button_roundedcorners"
-        android:hint="Say Something"
+        android:hint="  Say Something"
         android:inputType="textMultiLine"
         android:minLines="3"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tags" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+         />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/appCompatImageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_margin="10dp"
         android:background="@drawable/style_button_roundedcorners"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/content" />
+        android:scaleType="fitCenter"
+        app:layout_constraintTop_toBottomOf="@+id/content"
+        tools:layout_editor_absoluteX="-23dp" />
 
     <TextView
         android:id="@+id/add_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/rokkitt"
-        android:text="  +  Add An Image"
-        android:textColor="#4065EF"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2"
-        tools:layout_editor_absoluteX="-31dp" />
+        android:text="+"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView2"
+        app:layout_constraintTop_toTopOf="@+id/appCompatImageView2"
+        tools:layout_editor_absoluteX="-46dp" />
 
     <Button
         android:id="@+id/postbtn"
@@ -77,13 +92,17 @@
         android:background="@drawable/style_button_roundedcorners"
         android:fontFamily="@font/rokkitt"
         android:text=" Spread the Word! "
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
         android:textSize="20sp"
+        android:layout_margin="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_img" />
+        app:layout_constraintTop_toBottomOf="@+id/tags" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
-
+</ScrollView>

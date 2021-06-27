@@ -12,24 +12,22 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.me.book_o_matic.R
 import com.me.book_o_matic.adapters.subscriptions.SubscriptionsViewModel
 import com.me.book_o_matic.adapters.PostsAdapter
 import com.me.book_o_matic.utils.Repository
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 
 class Subscriptions:Fragment() {
-    private val PostViewModel by viewModels<SubscriptionsViewModel>()
+    val PostViewModel by viewModels<SubscriptionsViewModel>()
     private val postsAdapter = PostsAdapter()
     lateinit var repo: Repository
     lateinit var recyclerView: RecyclerView
@@ -45,35 +43,35 @@ class Subscriptions:Fragment() {
     ): View? {
         val view:View = inflater.inflate(R.layout.fragment_subscriptions,container,false)
         noView = view.findViewById(R.id.no_views)
+        noView.visibility = GONE
+
         progressBar = view.findViewById(R.id.prog_bar)
         refreshLayout = view.findViewById(R.id.ref_layout)
         refreshLayout.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener {
-            startandrestartjob()
+            postsAdapter.refresh()
+            refreshLayout.isRefreshing = false
+            lifecycleScope.async {
+                delay(1000)
+                remover()
+            }
         })
+
         repo = Repository(view.context)
         recyclerView = view.findViewById(R.id.subs_recyclerview)
         recyclerView.layoutManager = LinearLayoutManager(view.context)
-/*        val baseQuery: Query = postsref
-            .whereIn("uid",subs.split(","))
-            .orderBy("timestamp",Query.Direction.ASCENDING)
-        val config: PagedList.Config = PagedList.Config.Builder()
-            .setPrefetchDistance(10)
-            .setPageSize(3)
-            .build()
-        val options = FirestorePagingOptions.Builder<Post>()
-            .setLifecycleOwner(this)
-            .setQuery(baseQuery, config, Post::class.java)
-            .build()*/
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         recyclerView.adapter = postsAdapter
-        startandrestartjob()
+        startjob()
+        lifecycleScope.async {
+            delay(1000)
+            remover()
+        }
         super.onViewCreated(view, savedInstanceState)
     }
-    fun startandrestartjob(){
-        job?.cancel()
+    fun startjob(){
         job = viewLifecycleOwner.lifecycleScope.launch {
             PostViewModel.flow.collect{
                 postsAdapter.submitData(lifecycle,it)
@@ -84,12 +82,14 @@ class Subscriptions:Fragment() {
                 progressBar.isVisible = loadStates.refresh is LoadState.Loading
 
             }
-        if(postsAdapter.itemCount == 0){
-            noView.visibility = GONE
         }
-            else{
-                noView.visibility = VISIBLE
-            }
+    }
+    fun remover(){
+        if(postsAdapter.itemCount == 0){
+            noView.visibility = VISIBLE
+        }
+        else{
+            noView.visibility = GONE
         }
     }
 

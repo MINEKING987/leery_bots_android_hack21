@@ -1,6 +1,8 @@
 package com.me.book_o_matic.adapters
 
+import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -22,4 +24,9 @@ object BindingAdapters {
                 .into(imgView)
         }
     }
-}
+//    @BindingAdapter("likes")
+//    @JvmStatic
+//    fun setlikes(txtView: TextView, likes:Long){
+//        txtView.text = likes.toString()+"  "
+//        }
+    }

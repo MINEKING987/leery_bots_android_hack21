@@ -19,10 +19,11 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        goto = intent.getIntExtra("goto",0)
+
         viewPager = findViewById(R.id.login_viewpager)
         viewPager.isUserInputEnabled =false
         run()
+        goto = intent.getIntExtra("goto",0)
         movetofragment(goto!!)
     }
     fun movetofragment(fragval:Int) {

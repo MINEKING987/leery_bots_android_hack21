@@ -8,18 +8,20 @@ import com.me.book_o_matic.firebasemodels.Post
 import com.me.book_o_matic.utils.Repository
 import kotlinx.coroutines.tasks.await
 
-class SubscriptionsPagingSource(private val db: FirebaseFirestore, repository: Repository) : PagingSource<QuerySnapshot, Post>() {
+class SubscriptionsPagingSource(private val db: FirebaseFirestore, subs:List<String>) : PagingSource<QuerySnapshot, Post>() {
 
-    val repository = repository
+    val subs = subs
     override suspend fun load(params: LoadParams<QuerySnapshot>): LoadResult<QuerySnapshot, Post> {
         return try {
             val currentPage = params.key ?: db.collection("Posts")
-                .whereIn("uid",repository.getuserSubs().split(","))
+                .whereIn("uid",subs)
+                .orderBy("timestamp")
                 .limit(10).get().await()
 
             val lastDocumentSnapshot = currentPage.documents[currentPage.size() - 1]
             val nextPage = db.collection("Posts")
-                .whereIn("uid",repository.getuserSubs().split(","))
+                .whereIn("uid",subs)
+                .orderBy("timestamp")
                 .limit(10).startAfter(lastDocumentSnapshot)
                 .get()
                 .await()
@@ -30,7 +32,7 @@ class SubscriptionsPagingSource(private val db: FirebaseFirestore, repository: R
                 nextKey = nextPage
             )
         } catch (e: Exception) {
-            Log.e("PAGINGSource:",e.message.toString())
+            Log.e("subspagingSource:",e.message.toString())
             LoadResult.Error(e)
 
         }

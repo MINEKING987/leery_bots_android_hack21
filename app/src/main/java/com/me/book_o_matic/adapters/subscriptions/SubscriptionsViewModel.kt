@@ -13,7 +13,8 @@ import com.me.book_o_matic.utils.Repository
 class SubscriptionsViewModel(application: Application) : AndroidViewModel(application) {
     val repo = Repository(application)
     val flow = Pager(PagingConfig(20)) {
-        SubscriptionsPagingSource(FirebaseFirestore.getInstance(),repo)
+        val subs = repo.getuserSubs().split(",")
+        SubscriptionsPagingSource(FirebaseFirestore.getInstance(),subs)
     }.flow.cachedIn(viewModelScope)
 
 }

@@ -64,33 +64,6 @@ class OnBoardingFragment1() : Fragment() {
         i.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(Intent.createChooser(i, "Select Image"), 101)
     }
-
-    private fun CheckandCreateUser() {
-
-
-        val userModel = User(name.text.toString(),penName.text.toString())
-        val batch: WriteBatch = db.batch()
-        val user = db.collection("User")
-        val userRef = user.document("${auth.uid}")
-        batch.set(userRef,userModel)
-
-        val indexModel= Index(userRef.id)
-        val index = db.collection("Index")
-        val indexRef = index.document("User/username/${penName.text}")
-        batch.set(indexRef,indexModel)
-        batch.commit().addOnCompleteListener {
-            if(it.isSuccessful){
-                (activity as LoginActivity).movetofragment(2)
-                Log.i("onboarding1","Moving to 2")
-            }
-            else if(it.exception?.message.equals("PERMISSION_DENIED: The caller does not have permission")){
-                Toast.makeText(this.activity, "PenName Already In-Use,Please choose another",Toast.LENGTH_LONG).show()
-            }
-            else{Toast.makeText(this.activity, it.exception?.message,Toast.LENGTH_LONG).show()
-                it.exception?.message?.let { it1 -> Log.i("FireBaseException:", it1) }
-            }
-        }
-    }
      override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
          super.onActivityResult(requestCode, resultCode, data)
 
@@ -104,7 +77,7 @@ class OnBoardingFragment1() : Fragment() {
                  }
              }
          }
-         Toast.makeText(this.activity,"There Seems to be an error Please try again",Toast.LENGTH_SHORT).show()
+         Toast.makeText(this.activity,"There Seems to be an error, please try again",Toast.LENGTH_SHORT).show()
     }
 
     private fun uploadImage(file: Uri) {
@@ -148,5 +121,30 @@ class OnBoardingFragment1() : Fragment() {
             Glide.with(this).load(downloadUri).into(profileImg)
         }
     }
+    private fun CheckandCreateUser() {
 
+
+        val userModel = User(name.text.toString(),penName.text.toString(),profileimage = auth.currentUser.photoUrl.toString())
+        val batch: WriteBatch = db.batch()
+        val user = db.collection("User")
+        val userRef = user.document("${auth.uid}")
+        batch.set(userRef,userModel)
+
+        val indexModel= Index(userRef.id)
+        val index = db.collection("Index")
+        val indexRef = index.document("User/username/${penName.text}")
+        batch.set(indexRef,indexModel)
+        batch.commit().addOnCompleteListener {
+            if(it.isSuccessful){
+                (activity as LoginActivity).movetofragment(2)
+                Log.i("onboarding1","Moving to 2")
+            }
+            else if(it.exception?.message.equals("PERMISSION_DENIED: The caller does not have permission")){
+                Toast.makeText(this.activity, "PenName already in use",Toast.LENGTH_LONG).show()
+            }
+            else{Toast.makeText(this.activity, it.exception?.message,Toast.LENGTH_LONG).show()
+                it.exception?.message?.let { it1 -> Log.i("FireBaseException:", it1) }
+            }
+        }
+    }
 }

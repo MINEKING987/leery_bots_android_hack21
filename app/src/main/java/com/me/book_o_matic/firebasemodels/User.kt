@@ -7,5 +7,7 @@ data class User(
     val subs:String = "",
     val chats:String = "",
     val posts:String = "",
+    val profileimage:String = "",
+    val bio:String = ""
 
 )

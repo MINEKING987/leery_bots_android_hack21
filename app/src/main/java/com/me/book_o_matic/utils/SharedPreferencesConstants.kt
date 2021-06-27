@@ -5,6 +5,8 @@ const val USER_PENNAME = "penName"
 const val USER_UID = "userid"
 const val USER_INTERESTS = "userInterests"
 const val USER_SUBSCRIPTIONS = "userSubscription"
+const val USER_NAME = "userName"
+const val USER_BIO = "userBio"
 
 
 
